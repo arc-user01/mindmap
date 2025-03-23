@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.10/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.10/dist/index.js"></script><script>(r => {
+              setTimeout(r);
+            })(function renderToolbar() {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
+              const markmap = getMarkmap();
+              window.mm = markmap.Markmap.create(
+                "svg#mindmap",
+                (getOptions || markmap.deriveOptions)(jsonOptions),
+                root2
+              );
+            })(() => window.markmap,null,{"content":"<strong>dqc_main</strong>","children":[{"content":"<strong>Accepted Parameter</strong>","children":[{"content":"\n<p data-lines=\"2,4\"><strong>dataframe</strong> <em>(Required, DataFrame)</em>: At least one check must be passed with the dataframe.<br>\nCheck if <code>dataframe</code> is provided**</p>","children":[{"content":"<strong>Yes &#x2192; Process DataFrame</strong>","children":[{"content":"<strong>Check: <code>checkType</code> is provided</strong>","children":[],"payload":{"tag":"li","lines":"5,6"}},{"content":"<strong>Yes &#x2192; Proceed</strong>","children":[],"payload":{"tag":"li","lines":"6,7"}},{"content":"<strong>No &#x2192; Raise ValueError</strong>","children":[],"payload":{"tag":"li","lines":"7,8"}},{"content":"<strong>Initialize <code>results</code> dictionary</strong>","children":[],"payload":{"tag":"li","lines":"8,9"}},{"content":"<strong>Loop through <code>col_name</code></strong>","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"<strong>For each <code>checkType</code></strong>","children":[{"content":"Call <code>apply_check(dataframe, column, check)</code>","children":[],"payload":{"tag":"li","lines":"11,12"}},{"content":"Store <code>valid_percentage</code> in <code>results</code>","children":[],"payload":{"tag":"li","lines":"12,13"}},{"content":"Print validation result","children":[],"payload":{"tag":"li","lines":"13,14"}}],"payload":{"tag":"li","lines":"10,14"}},{"content":"<strong>Return <code>results</code></strong>","children":[],"payload":{"tag":"li","lines":"14,15"}}],"payload":{"tag":"li","lines":"4,15"}},{"content":"<strong>No &#x2192; Fetch Configuration</strong>","children":[{"content":"Print &quot;No dataframe provided. Fetching configuration.&quot;","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"(Later step: Fetch from <code>fetch_config_data()</code>)","children":[],"payload":{"tag":"li","lines":"17,18"}}],"payload":{"tag":"li","lines":"15,18"}}],"payload":{"tag":"li","lines":"2,18"}},{"content":"\n<p data-lines=\"18,19\"><strong>sourceTableName</strong> <em>(optional, str or list)</em></p>","children":[{"content":"<strong>fetch_dq_config</strong>","children":[{"content":"<strong>Reads from</strong>: <code>lh_practice.dq_config</code>","children":[],"payload":{"tag":"li","lines":"20,21"}},{"content":"<strong>Processing Steps</strong>:","children":[{"content":"Converts string parameters to lists","children":[],"payload":{"tag":"li","lines":"22,23"}},{"content":"Filters based on:","children":[{"content":"<code>sourceTableName</code>","children":[],"payload":{"tag":"li","lines":"24,25"}},{"content":"<code>col_name</code> (checks for column match in a comma-separated string)","children":[],"payload":{"tag":"li","lines":"25,26"}},{"content":"<code>checkType</code>","children":[],"payload":{"tag":"li","lines":"26,27"}}],"payload":{"tag":"li","lines":"23,27"}},{"content":"Extracts:","children":[{"content":"<strong>Table Name</strong> (<code>sourceTable</code>)","children":[],"payload":{"tag":"li","lines":"28,29"}},{"content":"<strong>Columns</strong> (<code>column_name</code>, split into a list)","children":[],"payload":{"tag":"li","lines":"29,30"}},{"content":"<strong>Check Type</strong> (<code>checktype</code>)","children":[],"payload":{"tag":"li","lines":"30,31"}},{"content":"<strong>Threshold</strong> (handles JSON conversion if applicable)","children":[],"payload":{"tag":"li","lines":"31,32"}}],"payload":{"tag":"li","lines":"27,32"}}],"payload":{"tag":"li","lines":"21,32"}},{"content":"<strong>Returns</strong>: <code>List[tuple]</code>","children":[{"content":"Each tuple contains:","children":[{"content":"<code>(table_name, columns, check_type, threshold)</code>","children":[],"payload":{"tag":"li","lines":"34,35"}}],"payload":{"tag":"li","lines":"33,35"}},{"content":"<strong>Operations after fetching data</strong>:","children":[{"content":"Check if <code>config_list</code> is empty","children":[],"payload":{"tag":"li","lines":"36,37"}},{"content":"Initialize:","children":[{"content":"<code>results</code> dictionary","children":[],"payload":{"tag":"li","lines":"38,39"}},{"content":"<code>table_dataframes</code> cache","children":[],"payload":{"tag":"li","lines":"39,40"}}],"payload":{"tag":"li","lines":"37,40"}},{"content":"Iterate over <code>config_list</code>:","children":[{"content":"Load table data if not already cached","children":[],"payload":{"tag":"li","lines":"41,42"}},{"content":"Handle exceptions if table loading fails","children":[],"payload":{"tag":"li","lines":"42,43"}},{"content":"Iterate over columns:","children":[{"content":"Skip columns if not explicitly passed","children":[],"payload":{"tag":"li","lines":"44,45"}},{"content":"Call <strong>apply_check</strong> with:","children":[{"content":"<code>table_df</code>","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"<code>column</code>","children":[],"payload":{"tag":"li","lines":"47,48"}},{"content":"<code>check_type</code>","children":[],"payload":{"tag":"li","lines":"48,49"}},{"content":"<code>threshold</code>","children":[],"payload":{"tag":"li","lines":"49,50"}}],"payload":{"tag":"li","lines":"45,50"}},{"content":"<strong>apply_check Returns</strong>:","children":[{"content":"<code>valid_count</code>","children":[],"payload":{"tag":"li","lines":"51,52"}},{"content":"<code>valid_percentage</code>","children":[],"payload":{"tag":"li","lines":"52,53"}}],"payload":{"tag":"li","lines":"50,53"}},{"content":"<strong>Validate against threshold</strong>:","children":[{"content":"Default threshold: <code>70.0</code> if not provided","children":[],"payload":{"tag":"li","lines":"54,55"}},{"content":"Compare <code>valid_percentage</code> with <code>column_threshold</code>","children":[],"payload":{"tag":"li","lines":"55,56"}},{"content":"Print pass/fail status","children":[],"payload":{"tag":"li","lines":"56,57"}},{"content":"Store results in <code>results</code> dictionary","children":[],"payload":{"tag":"li","lines":"57,58"}},{"content":"Append log entry to <code>log_entries</code>","children":[],"payload":{"tag":"li","lines":"58,59"}}],"payload":{"tag":"li","lines":"53,59"}}],"payload":{"tag":"li","lines":"43,59"}}],"payload":{"tag":"li","lines":"40,59"}},{"content":"<strong>Log results</strong> to <code>dq_check_log</code> table using <code>log_results(log_entries)</code>","children":[{"content":"<strong>log_results Function</strong>:","children":[{"content":"<strong>Parameters:</strong>","children":[{"content":"<code>log_entries</code> <em>(list of tuples)</em>: Each tuple contains log data for data quality checks.","children":[],"payload":{"tag":"li","lines":"62,63"}}],"payload":{"tag":"li","lines":"61,63"}},{"content":"Appends logs to <code>lh_practice.dq_check_log</code> table","children":[],"payload":{"tag":"li","lines":"63,65"}}],"payload":{"tag":"li","lines":"60,65"}}],"payload":{"tag":"li","lines":"59,65"}}],"payload":{"tag":"li","lines":"35,65"}}],"payload":{"tag":"li","lines":"32,65"}}],"payload":{"tag":"li","lines":"19,65"}}],"payload":{"tag":"li","lines":"18,65"}},{"content":"\n<p data-lines=\"65,66\"><strong>col_name</strong> <em>(optional, str or list)</em></p>","children":[],"payload":{"tag":"li","lines":"65,66"}},{"content":"\n<p data-lines=\"66,67\"><strong>checkType</strong> <em>(optional, str or list)</em></p>","children":[],"payload":{"tag":"li","lines":"66,67"}}],"payload":{"tag":"li","lines":"1,67"}}],"payload":{"tag":"h1","lines":"0,1"}},{})</script>
+</body>
+</html>
